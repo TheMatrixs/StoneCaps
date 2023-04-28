@@ -21,9 +21,10 @@ router.post ('/', async (req, res, next) => {
 })
 
 // GET /api/order/:orderId
-router.post ('/', async (req, res, next) => {
+router.post ('/:orderId', async (req, res, next) => {
+    const { orderId } = req.params;
+
     try {
-        const { orderId } = req.params;
         const order = await getOrderById(orderId);
         res.send(order);
 
